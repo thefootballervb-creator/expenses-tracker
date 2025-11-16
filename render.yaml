@@ -4,12 +4,9 @@ services:
     env: docker
     region: oregon
     plan: free
-    # Option 1: If backend folder is at repository root
+    # Dockerfile path relative to repository root
+    # Remove rootDir - let Docker handle the context
     dockerfilePath: ./backend/Dockerfile
-    rootDir: ./backend
-    # Option 2: If backend is nested (uncomment and comment Option 1 if needed):
-    # dockerfilePath: ./Fullstack-Expense-Tracker-main/backend/Dockerfile
-    # rootDir: ./Fullstack-Expense-Tracker-main/backend
 
     envVars:
       - key: SPRING_PROFILES_ACTIVE
