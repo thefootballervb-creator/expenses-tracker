@@ -4,8 +4,9 @@ services:
     env: docker
     region: oregon
     plan: free
-    # When render.yaml is in backend folder, Dockerfile is in same directory
-    dockerfilePath: ./Dockerfile
+
+    rootDir: backend
+    dockerfilePath: backend/Dockerfile
 
     envVars:
       - key: SPRING_PROFILES_ACTIVE
