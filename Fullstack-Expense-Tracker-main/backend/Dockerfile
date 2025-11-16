@@ -1,5 +1,5 @@
 # Multi-stage build for Spring Boot application
-# Note: Build context is repository root, so we need to copy from backend/ prefix
+# Note: With rootDir set to ./backend in render.yaml, build context is backend folder
 
 # Stage 1: Build the application
 FROM eclipse-temurin:21-jdk-alpine AS build
@@ -7,10 +7,10 @@ FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 
 # Copy Maven wrapper and pom.xml first for better layer caching
-# Build context is repo root, so copy from backend/ folder
-COPY backend/mvnw .
-COPY backend/.mvn .mvn
-COPY backend/pom.xml .
+# Build context is backend folder, so paths are relative to backend
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
 
 # Make mvnw executable
 RUN chmod +x ./mvnw
@@ -19,7 +19,7 @@ RUN chmod +x ./mvnw
 RUN ./mvnw dependency:go-offline -B
 
 # Copy source code
-COPY backend/src ./src
+COPY src ./src
 
 # Build the application
 RUN ./mvnw clean package -DskipTests
