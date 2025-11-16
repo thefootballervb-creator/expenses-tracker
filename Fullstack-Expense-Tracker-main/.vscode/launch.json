@@ -1,0 +1,64 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot - ExpenseTrackerApplication",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend",
+      "mainClass": "com.fullStack.expenseTracker.ExpenseTrackerApplication",
+      "projectName": "expenseTracker",
+      "args": "",
+      "envFile": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend/.env"
+    },
+    {
+      "type": "node",
+      "name": "Launch React App",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 3000,
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "name": "Attach to React",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "protocol": "inspector"
+    },
+    {
+      "type": "java",
+      "name": "Debug Current Test",
+      "request": "launch",
+      "mainClass": "${file}",
+      "projectName": "expenseTracker",
+      "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend",
+      "vmArgs": "-Dtest=${fileBasenameNoExtension}"
+    },
+    {
+      "type": "java",
+      "name": "Debug All Tests",
+      "request": "launch",
+      "mainClass": "",
+      "projectName": "expenseTracker",
+      "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend",
+      "vmArgs": "",
+      "args": "",
+      "preLaunchTask": "Backend: Run All Tests"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Full Stack App",
+      "configurations": [
+        "Spring Boot - ExpenseTrackerApplication",
+        "Launch React App"
+      ],
+      "stopAll": true
+    }
+  ]
+}
+

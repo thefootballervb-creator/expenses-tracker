@@ -1,0 +1,53 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-21",
+      "path": "C:\\Program Files\\Java\\jdk-21",
+      "default": true
+    }
+  ],
+  "files.exclude": {
+    "**/target": true,
+    "**/node_modules": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/target": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "java.test.config": {
+    "workingDirectory": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+  },
+  "java.test.defaultConfig": "",
+  "java.junit.config": {
+    "name": "JUnit 5",
+    "workingDirectory": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+  },
+  "java.test.editor.enableShortcuts": true,
+  "java.test.report.position": "sideView"
+}
+

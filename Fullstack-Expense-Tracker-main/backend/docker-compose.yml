@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mypockit-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/expenses_tracker?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456789
+      - APP_JWT_SECRET=your-super-secret-jwt-key-here-make-it-long-and-random
+      - APP_JWT_EXPIRATION_MS=86400000
+      - APP_USER_PROFILE_UPLOAD_DIR=./uploads/user/profile
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - mypockit-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mypockit-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789
+      - MYSQL_DATABASE=expenses_tracker
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - mypockit-network
+
+volumes:
+  mysql_data:
+
+networks:
+  mypockit-network:
+    driver: bridge
+

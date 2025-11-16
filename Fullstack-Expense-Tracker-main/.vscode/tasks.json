@@ -1,0 +1,145 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend: Spring Boot Run",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["spring-boot:run"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Backend: Maven Clean",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["clean"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Backend: Maven Compile",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["compile"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Backend: Run All Tests",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["test"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Backend: Run Tests with Coverage",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["test", "jacoco:report"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "group": "test"
+    },
+    {
+      "label": "Backend: Skip Tests on Build",
+      "type": "shell",
+      "command": "mvnw.cmd",
+      "args": ["clean", "package", "-DskipTests"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/backend"
+      },
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Frontend: npm start",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/frontend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Frontend: npm install",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": {
+        "cwd": "${workspaceFolder}/Fullstack-Expense-Tracker-main/frontend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Launch Full Stack",
+      "dependsOn": [
+        "Backend: Spring Boot Run",
+        "Frontend: npm start"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
+

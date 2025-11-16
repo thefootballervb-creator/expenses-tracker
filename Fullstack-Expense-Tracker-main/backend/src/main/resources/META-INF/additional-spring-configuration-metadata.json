@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "name": "app.jwt-secret",
+      "type": "java.lang.String",
+      "description": "Secret key used when signing JWT tokens."
+    },
+    {
+      "name": "app.jwt-expiration-ms",
+      "type": "java.lang.Long",
+      "description": "JWT expiration time window in milliseconds."
+    },
+    {
+      "name": "app.user.profile.upload.dir",
+      "type": "java.lang.String",
+      "description": "Filesystem directory where user profile images are stored."
+    }
+  ]
+}
+
