@@ -4,8 +4,7 @@ services:
     env: docker
     region: oregon
     plan: free
-    # Set rootDir to backend, so Dockerfile paths are relative to backend folder
-    rootDir: ./backend
+    # When render.yaml is in backend folder, Dockerfile is in same directory
     dockerfilePath: ./Dockerfile
 
     envVars:
@@ -32,3 +31,4 @@ services:
 
       - key: CORS_ALLOWED_ORIGINS
         sync: false
+

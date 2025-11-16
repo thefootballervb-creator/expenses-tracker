@@ -1,4 +1,5 @@
 # Multi-stage build for Spring Boot application
+# Note: Build context is repository root, so we need to copy from backend/ prefix
 
 # Stage 1: Build the application
 FROM eclipse-temurin:21-jdk-alpine AS build
@@ -6,9 +7,10 @@ FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 
 # Copy Maven wrapper and pom.xml first for better layer caching
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Build context is repo root, so copy from backend/ folder
+COPY backend/mvnw .
+COPY backend/.mvn .mvn
+COPY backend/pom.xml .
 
 # Make mvnw executable
 RUN chmod +x ./mvnw
@@ -17,7 +19,7 @@ RUN chmod +x ./mvnw
 RUN ./mvnw dependency:go-offline -B
 
 # Copy source code
-COPY src ./src
+COPY backend/src ./src
 
 # Build the application
 RUN ./mvnw clean package -DskipTests
@@ -50,4 +52,3 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
